@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter</title>
+</head>
+<body>
+<form method="post" action="{% url 'enter' %}">{% csrf_token %}
+<input type="email" class="form__input form__input--email" placeholder="Email" name="email"  required autocomplete="off"/><br>
+<button type="submit" style="margin-top:5px;background-color:blue;color:white;">Submit</button>
+ {% for i in messages %}
+    <h5 style="color:red;font-size:15px;">{{i}}</h5>
+    {% endfor %}
+</form>
+</body>
+</html>

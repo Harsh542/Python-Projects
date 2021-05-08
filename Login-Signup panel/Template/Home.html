@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Hello you are now signed in</h1>
+</div>
+<a href="{% url 'logout' %}" style="font-size:15px;" ><button>Log Out</button></a><br>
+{% for i in data %}
+<a href="{% url 'message' i.id %}">{{i.username}}<br></a>
+{% endfor %}
+</div>
+</body>
+</html>

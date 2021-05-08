@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Permission</title>
+</head>
+<body>
+<div class="form__submit flex items-center justify-between">
+    {% if data.is_active %}
+    <a href="{% url 'permit' data.id %}"><button class="form__btn-submit" style="color:red">Deactivate</button></a>
+    {% else %}
+    <a href="{% url 'permit' data.id %}"><button class="form__btn-submit" style="color:green;">Activate</button></a>
+    {% endif %}
+
+</div>
+</body>
+</html>

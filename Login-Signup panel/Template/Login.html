@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<title>User Authentication</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+<!--    <link rel="stylesheet" href="{% static '../shared/normalize.css' %}" />-->
+<!--    <link rel="stylesheet" href="{% static '../shared/additional.css' %}" />-->
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="dropbox-content max-w-xl mx-auto flex">
+      <div class="dropbox-content__img w-half flex justify-center items-center">
+        <img src="{% static 'img/undraw-login.svg' %}" alt="Login Image" />
+      </div>
+      <div class="dropbox-content__form w-half">
+        <form method="post" action=" " class="flex flex-col">{% csrf_token %}
+          <div class="form__header flex justify-between">
+            <h5>Sign In</h5>
+            <p>or <a href="{% url 'create' %}">create an account</a></p>
+          </div>
+
+          <div class="flex flex-col form__input-group">
+            {% for i in messages %}
+              <h5 style="color:red;font-size:15px;">{{i}}</h5>
+          {% endfor %}
+            <input type="email" class="form__input form__input--email" placeholder="Email" name="email"  required autocomplete="off"/>
+            <input type="password" class="form__input form__input--password" placeholder="Password" required name="password" minlength="8"/>
+          </div>
+          <div class="form__submit flex items-center justify-between">
+            <div class="flex">
+              <input type="checkbox" class="form__checklist" id="remember" />
+              <label for="remember" class="form__label">Remember me</label>
+            </div>
+            <button class="form__btn-submit">Sign in</button>
+          </div>
+
+          <a href="{% url 'forgotPassword' %}" class="form__forgot">Forgot Password</a>
+          <a href="{% url 'enter' %}" class="form__forgot" style="color:orange;">Permission</a>
+
+          <p class="form__notes">
+            This page is protected by reCAPTCHA, and subject to the Google <a href="">Privacy Policy</a> and
+            <a href="#">Terms of service</a>.
+          </p>
+        </form>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
